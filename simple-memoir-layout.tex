@@ -1,0 +1,93 @@
+\documentclass[a4paper,12pt,oneside]{memoir}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{pifont}
+\usepackage{indentfirst}
+\usepackage{ellipsis}
+\usepackage{alltt}
+
+\usepackage{lipsum}
+
+\makeatletter
+\aliaspagestyle{title}{empty}
+\let\origps@chapter\ps@chapter
+\preto\frontmatter{\let\ps@chapter\ps@empty\pagestyle{empty}}
+\preto\mainmatter{
+  \cleardoublepage
+  \let\ps@chapter\origps@chapter\pagestyle{headings}}
+\makeatother
+
+\newcommand{\at}{\makeatletter @\makeatother}
+
+\medievalpage
+
+\begin{document}
+
+\frontmatter
+\title{Title}
+\author{Author}
+\date{}
+\maketitle
+
+\mainmatter
+
+\pagestyle{plain}
+
+\chapterstyle{dash}
+
+\begin{Spacing}{1.2}
+
+%1
+\chapter{}
+
+\noindent
+\lipsum[1-2]
+
+— \lipsum[3]
+
+\lipsum[4]
+
+— \lipsum[5]
+
+\plainbreak{2}
+\renewcommand{\pfbreakdisplay}{\ding{167}\quad\ding{167}\quad\ding{167}}\fancybreak{\pfbreakdisplay}
+\plainbreak{2}
+
+\begin{center}
+\textbf{Diary example}
+\end{center}
+
+\begin{center}
+\textit{Subtitle}
+\end{center}
+
+\begin{flushright} Bologna, 4 giugno 2011 \end{flushright}
+
+\noindent
+Dear,
+
+\noindent
+\lipsum[6-7]
+
+\begin{flushright} Name \end{flushright}
+
+%2
+\chapter{}
+
+\noindent
+\lipsum[8-10]
+
+\plainbreak{2}
+\renewcommand{\pfbreakdisplay}{\ding{167}\quad\ding{167}\quad\ding{167}}\fancybreak{\pfbreakdisplay}
+\plainbreak{2}
+
+\noindent
+\lipsum[11-12]
+
+\end{Spacing}
+
+\backmatter
+
+\end{document}
